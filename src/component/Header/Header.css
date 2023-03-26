@@ -1,0 +1,23 @@
+.header{
+    height: 80px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.nav a{
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 22px;
+    color: white;
+}
+
+.nav a:hover{
+    background-color: tomato;
+    border-radius: 4px;
+    text-align: center;
+}
