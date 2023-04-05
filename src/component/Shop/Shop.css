@@ -9,3 +9,25 @@
     gap: 45px;
     margin: 50px;
 }
+.processed-link{
+    text-decoration: none;
+}
+
+.btn-processed{
+
+   
+    height: 36px;
+    font-size: 20px;
+    margin: 10px auto;
+    background: #FF9900;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    border: none;
+    text-decoration: none;
+    
+    
+ }

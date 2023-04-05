@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Cart from '../Cart/Cart';
-import { useLoaderData, useRouteLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useRouteLoaderData } from 'react-router-dom';
 import Reviewitem from '../Reviewitem/Reviewitem';
 import './Orders.css'
-import { removeFromDb } from '../../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 
 const Orders = () => {
     const savedCart =useLoaderData()
@@ -13,6 +13,11 @@ const Orders = () => {
         const remaining = cart.filter(product => product.id !== id)
         setCart(remaining)
         removeFromDb(id)
+    }
+
+    const handleClearCart = () => {
+        setCart([]);
+        deleteShoppingCart()
     }
 
     return (
@@ -32,7 +37,12 @@ const Orders = () => {
 
         <div  className="cart-Container">
       
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart}
+        handleClearCart={handleClearCart}>
+
+            <Link className='processed-link' to='/checkOut'><button className='btn-processed'>Processed check out</button></Link>
+
+        </Cart>
        
         </div>
        
