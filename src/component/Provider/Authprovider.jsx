@@ -25,18 +25,33 @@ const Authprovider = ({children}) => {
    
     const logOut = () => {
      return  signOut(auth)
+     .then(() => {
+        updateUser(null)
+     })
+
+    }
+
+    const updateUser = (newUser) => {
+        setUser(newUser)
 
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser)
-            if (currentUser?.uid) {
+            // console.log(currentUser)
+            // if (currentUser?.uid) {
+            //     setUser(currentUser)
+            // }
+            // else{
+            //     setUser(null)
+            // }
+
+            if(currentUser){
                 setUser(currentUser)
+                setLoading(false)
+
             }
-            else{
-                setUser(null)
-            }
+
         })
 
         return () => {

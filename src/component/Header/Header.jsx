@@ -5,18 +5,19 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Provider/Authprovider';
 
 const Header = () => {
-    const[reload,setReload] = useState(false)
+    // const[reload,setReload] = useState(false)
     const {user,logOut} = useContext(AuthContext)
+    const [loggedIn,setLoggedIn] = useState(!!user)
 
     const handleSignOut =() => {
-        setReload(false)
+        // setReload(false)
        logOut()
 
-       .then(result => {})
+       .then(result => {setLoggedIn(false)})
        .catch(error => {
         console.log(error.message)
        })
-       setReload(true)
+    //    setReload(true)
     }
     
     return (
