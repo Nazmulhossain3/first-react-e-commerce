@@ -1,14 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Header.css'
 import logo from '../../images/Logo.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Provider/Authprovider';
 
 const Header = () => {
+    const[reload,setReload] = useState(false)
     const {user,logOut} = useContext(AuthContext)
 
     const handleSignOut =() => {
-       
+        setReload(false)
+       logOut()
+
+       .then(result => {})
+       .catch(error => {
+        console.log(error.message)
+       })
+       setReload(true)
     }
     
     return (
@@ -25,8 +33,8 @@ const Header = () => {
 
             {
                 user && <span className='user-text'>Welcome {user.email}
-                <button onClick={handleSignOut}>SignOut</button>
-                </span>
+                <button onClick={handleSignOut}>LogOut</button>
+                </span> 
             }
            </div>
         
